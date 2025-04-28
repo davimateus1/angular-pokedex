@@ -1,0 +1,22 @@
+<div
+  (click)="goToDetails()"
+  (keydown.enter)="goToDetails()"
+  (keydown.space)="goToDetails()"
+  tabindex="0"
+  role="button"
+  class="cursor-pointer max-w-sm rounded overflow-hidden shadow-lg bg-white p-4 transition hover:shadow-xl hover:scale-105"
+>
+  <img class="w-full" [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2 capitalize">{{ pokemon.name }}</div>
+    <p class="text-gray-700 text-base">
+      <strong>Height:</strong> {{ pokemon.height }} decimeters<br />
+      <strong>Weight:</strong> {{ pokemon.weight }} hectograms<br />
+      <strong>Types: </strong>
+      <span *ngFor="let type of pokemon.types; let i = index">
+        <span class="capitalize">{{ type.type.name }}</span>
+        <span *ngIf="i < pokemon.types.length - 1">, </span>
+      </span>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="flex items-center justify-center space-x-2 my-4">
+  <button
+    class="px-4 py-2 text-white bg-blue-500 rounded"
+    (click)="changePage('prev')"
+    [disabled]="offset <= 0"
+  >
+    Anterior
+  </button>
+
+  <div class="flex space-x-2">
+    <button
+      *ngFor="let page of pageRange"
+      class="px-4 py-2"
+      [ngClass]="{
+        'bg-blue-500 text-white': page === currentPage,
+        'bg-gray-200 text-gray-700': page !== currentPage,
+      }"
+      (click)="goToPage(page)"
+    >
+      {{ page }}
+    </button>
+  </div>
+
+  <button
+    class="px-4 py-2 text-white bg-blue-500 rounded"
+    (click)="changePage('next')"
+    [disabled]="offset + limit >= total"
+  >
+    Próximo
+  </button>
+</div>

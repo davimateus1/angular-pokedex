@@ -1,0 +1,28 @@
+<div *ngIf="error">
+  <div class="flex justify-center items-center my-4">
+    <mat-icon class="text-red-500" aria-hidden="false" aria-label="Error icon">error</mat-icon>
+    <span class="text-red-500 ml-2"> Oops! Something went wrong. Please try again later. </span>
+  </div>
+</div>
+
+<div *ngIf="loading" class="flex justify-center items-center my-4">
+  <mat-spinner
+    class="text-red-500"
+    [diameter]="30"
+    [strokeWidth]="5"
+    mode="indeterminate"
+  ></mat-spinner>
+</div>
+
+<div *ngIf="!loading && !error">
+  <app-pagination
+    [total]="total"
+    [limit]="limit"
+    [offset]="offset"
+    (pageChange)="onPageChange($event)"
+  ></app-pagination>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4">
+    <app-pokemon-card *ngFor="let pokemon of pokemons" [pokemon]="pokemon"></app-pokemon-card>
+  </div>
+</div>
