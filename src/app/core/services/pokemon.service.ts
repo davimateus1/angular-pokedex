@@ -33,7 +33,7 @@ export class PokemonService {
       );
   }
 
-  getPokemonDetails(name: string): Observable<PokemonDetails> {
-    return this.http.get<PokemonDetails>(`${this.apiUrl}/${name}`);
+  getPokemonDetails(id: number): Observable<PokemonDetails> {
+    return this.http.get<PokemonDetails>(`${this.apiUrl}/${id}`);
   }
 }
